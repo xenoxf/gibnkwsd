@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenJunior — Your AI Code Agent</title>
+    <meta name="description" content="OpenJunior is a free, open-source AI code assistant. Download for macOS, Windows, and Linux." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/global.css" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OpenJunior",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Windows, Linux",
+      "description": "A free, open-source AI code assistant powered by OpenCode",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    })} />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Global Noise Overlay -->
+      <div class="noise-overlay"></div>
+
+      <!-- Navigation -->
+      <nav id="main-nav" class="nav">
+        <div class="nav-inner">
+          <a href="#" class="nav-logo">
+            <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="8" fill="currentColor" opacity="0.15" />
+              <path d="M10 16l4-4 4 4-4 4-4-4z" fill="currentColor" opacity="0.6" />
+              <path
+                d="M18 12l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                opacity="0.4"
+              />
+            </svg>
+            <span>OpenJunior</span>
+          </a>
+
+          <div class="nav-links">
+            <a href="#download" class="nav-link">Download</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="https://github.com/xenoxf/openjunior" target="_blank" rel="noopener" class="nav-link">GitHub</a>
+          </div>
+
+          <a href="#download" class="nav-cta" id="nav-cta">
+            Get Started
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+
+          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-inner">
+          <a href="#download" class="mobile-menu-link">Download</a>
+          <a href="#features" class="mobile-menu-link">Features</a>
+          <a href="https://github.com/xenoxf/openjunior" target="_blank" rel="noopener" class="mobile-menu-link">GitHub</a>
+          <a href="#download" class="mobile-menu-cta">Get Started</a>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-bg">
+          <div class="hero-gradient"></div>
+          <div class="hero-grid"></div>
+        </div>
+
+        <div class="hero-content">
+          <div class="hero-badge reveal">
+            <span class="hero-badge-dot"></span>
+            Free &amp; Open Source
+          </div>
+
+          <h1 class="hero-title reveal" style="transition-delay: 100ms;">
+            Your AI
+            <span class="gradient-text">Code Agent</span>
+          </h1>
+
+          <p class="hero-subtitle reveal" style="transition-delay: 200ms;">
+            OpenJunior is a free, open-source AI code assistant that helps you write, refactor, and understand code.
+            Powered by OpenCode, it runs on your machine — no data leaves your computer.
+          </p>
+
+          <div class="hero-actions reveal" style="transition-delay: 300ms;">
+            <a href="#download" class="btn-primary">
+              Download
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a href="https://github.com/xenoxf/openjunior" target="_blank" rel="noopener" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                />
+              </svg>
+              Source Code
+            </a>
+          </div>
+
+          <div class="hero-platforms reveal" style="transition-delay: 400ms;">
+            <span>Available for</span>
+            <div class="platform-icons">
+              <span class="platform-icon">🍎 macOS</span>
+              <span class="platform-icon">🪟 Windows</span>
+              <span class="platform-icon">🐧 Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Decor -->
+        <div class="hero-terminal reveal" style="transition-delay: 500ms;">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="terminal-dot bg-red-500"></span>
+              <span class="terminal-dot bg-yellow-500"></span>
+              <span class="terminal-dot bg-green-500"></span>
+            </div>
+            <span class="terminal-title">openjunior — bash</span>
+          </div>
+          <div class="terminal-body">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-cursor"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Download Section -->
+      <section id="download" class="section download-section">
+        <div class="section-bg"></div>
+        <div class="container">
+          <div class="section-header reveal">
+            <h2 class="section-title">
+              Download
+              <span class="gradient-text">OpenJunior</span>
+            </h2>
+            <p class="section-subtitle">Get the latest version for your platform. Free forever.</p>
+          </div>
+
+          <!-- OS Detection Badge -->
+          <div id="os-detection" class="os-detection reveal" style="transition-delay: 100ms;"></div>
+
+          <!-- Version Badge -->
+          <div id="version-info" class="version-badge reveal" style="transition-delay: 150ms;"></div>
+
+          <!-- Platform Cards -->
+          <div class="platform-grid" id="platform-cards">
+            <div class="platform-card reveal" style="transition-delay: 200ms;">
+              <div class="platform-card-header">
+                <span class="platform-icon-large">🍎</span>
+                <h3 class="platform-name">macOS</h3>
+              </div>
+              <div class="platform-details">
+                <span class="platform-arch">Apple Silicon &amp; Intel</span>
+                <span class="platform-type">DMG Installer</span>
+              </div>
+              <div id="mac-download" class="platform-action">
+                <div class="skeleton"></div>
+              </div>
+            </div>
+
+            <div class="platform-card reveal" style="transition-delay: 300ms;">
+              <div class="platform-card-header">
+                <span class="platform-icon-large">🪟</span>
+                <h3 class="platform-name">Windows</h3>
+              </div>
+              <div class="platform-details">
+                <span class="platform-arch">Windows 10 / 11 (64-bit)</span>
+                <span class="platform-type">NSIS Installer (.exe)</span>
+              </div>
+              <div id="win-download" class="platform-action">
+                <div class="skeleton"></div>
+              </div>
+            </div>
+
+            <div class="platform-card reveal" style="transition-delay: 400ms;">
+              <div class="platform-card-header">
+                <span class="platform-icon-large">🐧</span>
+                <h3 class="platform-name">Linux</h3>
+              </div>
+              <div class="platform-details">
+                <span class="platform-arch">AppImage &bull; deb &bull; rpm</span>
+                <span class="platform-type">All Distributions</span>
+              </div>
+              <div id="linux-download" class="platform-action">
+                <div class="skeleton"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="download-footer reveal">
+            <p>
+              Prefer a different version?
+              <a href="https://github.com/xenoxf/openjunior/releases" target="_blank" rel="noopener"
+                >View all releases on GitHub</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Changelog Section -->
+      <section class="section changelog-section" id="changelog">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2 class="section-title">What's <span class="gradient-text">New</span></h2>
+            <p class="section-subtitle">Latest changes and improvements in the most recent release.</p>
+          </div>
+
+          <div class="changelog-card reveal" id="changelog-section">
+            <div class="changelog-header">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M4 4h12v12H4V4z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.4"
+                />
+                <path
+                  d="M7 10l2 2 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.8"
+                />
+              </svg>
+              <span>Changelog</span>
+            </div>
+            <div id="changelog-content" class="changelog-content">
+              <div class="skeleton" style="width: 30%"></div>
+              <div class="skeleton" style="width: 50%"></div>
+              <div class="skeleton" style="width: 90%"></div>
+              <div class="skeleton" style="width: 70%"></div>
+            </div>
+            <div id="changelog-more" class="changelog-more">
+              <a href="https://github.com/xenoxf/openjunior/releases" target="_blank" rel="noopener">View all releases →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="section features-section">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2 class="section-title">
+              Everything you need for <span class="gradient-text">AI-powered development</span>
+            </h2>
+            <p class="section-subtitle">
+              OpenJunior combines the power of OpenCode with a beautiful, native desktop experience.
+            </p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card reveal" style="transition-delay: 100ms;">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+              </div>
+              <h3 class="feature-title">AI-Powered</h3>
+              <p class="feature-desc">
+                Powered by OpenCode. Get context-aware code completions, refactoring suggestions, and bug fixes in real
+                time.
+              </p>
+            </div>
+
+            <div class="feature-card reveal" style="transition-delay: 200ms;">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <path d="M8 21h8M12 17v4" />
+                </svg>
+              </div>
+              <h3 class="feature-title">Desktop + Web + VS Code</h3>
+              <p class="feature-desc">
+                Use OpenJunior as a desktop app, in your browser, or directly inside VS Code. Same experience
+                everywhere.
+              </p>
+            </div>
+
+            <div class="feature-card reveal" style="transition-delay: 300ms;">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M4 17l6-6-6-6M12 19h8" />
+                </svg>
+              </div>
+              <h3 class="feature-title">Built-in Terminal</h3>
+              <p class="feature-desc">
+                Full PTY terminal with SSH tunnel management. Run commands, preview outputs, and let AI help debug.
+              </p>
+            </div>
+
+            <div class="feature-card reveal" style="transition-delay: 400ms;">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M10 20l4-16M14 4l4 16M18 20H6" />
+                </svg>
+              </div>
+              <h3 class="feature-title">Visual Git Tool</h3>
+              <p class="feature-desc">
+                Review diffs, stage changes, commit, push, manage branches, and create PRs — all from the AI chat.
+              </p>
+            </div>
+
+            <div class="feature-card reveal" style="transition-delay: 500ms;">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <h3 class="feature-title">Privacy First</h3>
+              <p class="feature-desc">
+                OpenJunior runs on your machine. Your code never leaves your computer. No telemetry, no tracking.
+              </p>
+            </div>
+
+            <div class="feature-card reveal" style="transition-delay: 600ms;">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="3" />
+                  <path
+                    d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"
+                  />
+                </svg>
+              </div>
+              <h3 class="feature-title">Customizable</h3>
+              <p class="feature-desc">
+                Configure MCP servers, integrate with your favorite tools, and extend OpenJunior with plugins.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-card reveal">
+            <h2 class="cta-title">Ready to supercharge your coding?</h2>
+            <p class="cta-subtitle">Download OpenJunior free and open-source. No sign-up required.</p>
+            <a href="#download" class="btn-primary btn-large">
+              Download Now
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-inner">
+            <div class="footer-brand">
+              <span class="footer-logo">OpenJunior</span>
+              <p class="footer-tagline">Your AI Code Agent — Free &amp; Open Source</p>
+            </div>
+            <div class="footer-links">
+              <a href="https://github.com/xenoxf/openjunior" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+              <a href="https://github.com/xenoxf/openjunior/releases" target="_blank" rel="noopener" class="footer-link"
+                >Releases</a
+              >
+              <a href="https://github.com/xenoxf/openjunior/issues" target="_blank" rel="noopener" class="footer-link"
+                >Issues</a
+              >
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2025-2026 OpenJunior. Released under the MIT License.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('open');
+        });
+
+        // Close menu on link click
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+          });
+        });
+      }
+
+      // Reveal animations on scroll
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      revealElements.forEach((el) => revealObserver.observe(el));
+    </script>
+
+    <script src="/download.js" defer></script>
+  </body>
+</html>
