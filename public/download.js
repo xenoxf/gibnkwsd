@@ -1,21 +1,39 @@
 const GITHUB_REPO = 'xenoxf/openjunior';
 
+function detectArchitecture() {
+  const ua = navigator.userAgent;
+  const platform = (navigator.platform || '').toLowerCase();
+
+  if (/aarch64|arm64|ARM/i.test(ua) || /aarch64|arm/i.test(platform)) return 'arm64';
+  if (/x86_64|x64|AMD64|Win64/i.test(ua) || /x86_64|x64/i.test(platform)) return 'x64';
+  if (/x86|i[3-6]86/i.test(platform)) return 'x64';
+
+  if (navigator.userAgentData && navigator.userAgentData.architecture) {
+    const arch = navigator.userAgentData.architecture;
+    if (/arm|aarch64/i.test(arch)) return 'arm64';
+    if (/x86|amd64/i.test(arch)) return 'x64';
+  }
+
+  return 'x64';
+}
+
 function getPlatform() {
   const ua = navigator.userAgent;
-  if (ua.includes('Mac OS')) return 'mac';
-  if (ua.includes('Windows')) return 'win';
-  if (ua.includes('Linux')) return 'linux';
-  return 'unknown';
+  const arch = detectArchitecture();
+  if (ua.includes('Mac OS')) return { os: 'mac', arch };
+  if (ua.includes('Windows')) return { os: 'win', arch };
+  if (ua.includes('Linux')) return { os: 'linux', arch };
+  return { os: 'unknown', arch };
 }
 
 function getPlatformLabel(platform) {
   const labels = { mac: 'macOS', win: 'Windows', linux: 'Linux' };
-  return labels[platform] || 'Unknown';
+  return labels[platform.os] || 'Unknown';
 }
 
 function getPlatformEmoji(platform) {
   const emojis = { mac: '🍎', win: '🪟', linux: '🐧' };
-  return emojis[platform] || '';
+  return emojis[platform.os] || '';
 }
 
 async function fetchLatestRelease() {
@@ -42,14 +60,32 @@ function renderDownloadButton(container, platform, release) {
   }
 
   const assets = release.assets || [];
-  const filters = {
-    mac: (a) => a.name.endsWith('.dmg') || a.name.endsWith('.dmg.gz'),
-    win: (a) => a.name.endsWith('.exe') || a.name.endsWith('.exe.gz'),
-    linux: (a) => a.name.endsWith('.AppImage') || a.name.endsWith('.deb') || a.name.includes('linux')
+  const { os, arch } = platform;
+
+  const linuxArchMap = { arm64: ['aarch64', 'arm64'], x64: ['x86_64', 'amd64'] };
+  const macArchMap = { arm64: ['arm64'], x64: ['x64'] };
+  const archNames = os === 'linux' ? (linuxArchMap[arch] || ['x86_64']) : (macArchMap[arch] || ['x64']);
+
+  const getMatch = (platformOs, extPrefs) => {
+    for (const ext of extPrefs) {
+      const match = assets.find(a =>
+        a.name.includes(platformOs) &&
+        archNames.some(name => a.name.includes(name)) &&
+        a.name.endsWith(ext)
+      );
+      if (match) return match;
+    }
+    return null;
   };
 
-  const filterFn = filters[platform] || (() => false);
-  const match = assets.find(filterFn);
+  let match = null;
+  if (os === 'mac') {
+    match = getMatch('mac', ['.dmg', '.zip']);
+  } else if (os === 'linux') {
+    match = getMatch('linux', ['.AppImage', '.deb', '.rpm']);
+  } else if (os === 'win') {
+    match = assets.find(a => a.name.includes('win') && a.name.endsWith('.exe'));
+  }
 
   if (match) {
     const size = match.size ? `<span class="download-size">${formatSize(match.size)}</span>` : '';
@@ -87,7 +123,8 @@ function showOSDetection(platform) {
   if (!el) return;
   const label = getPlatformLabel(platform);
   const emoji = getPlatformEmoji(platform);
-  el.innerHTML = `<span class="os-detection-badge">${emoji} Detected: ${label}</span>`;
+  const archLabel = platform.arch === 'arm64' ? 'ARM' : 'x86_64';
+  el.innerHTML = `<span class="os-detection-badge">${emoji} Detected: ${label} (${archLabel})</span>`;
 }
 
 function showVersion(release) {
@@ -109,7 +146,7 @@ async function init() {
   for (const [plat, id] of Object.entries(downloadMap)) {
     const container = document.getElementById(id);
     if (container) {
-      renderDownloadButton(container, plat, release);
+      renderDownloadButton(container, { os: plat, arch: platform.arch }, release);
     }
   }
 
