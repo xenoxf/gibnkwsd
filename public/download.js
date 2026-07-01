@@ -53,6 +53,16 @@ function formatSize(bytes) {
   return `${mb} MB`;
 }
 
+function getExtensionLabel(filename) {
+  if (filename.endsWith('.deb')) return 'deb';
+  if (filename.endsWith('.rpm')) return 'rpm';
+  if (filename.endsWith('.AppImage')) return 'AppImage';
+  if (filename.endsWith('.dmg')) return 'dmg';
+  if (filename.endsWith('.zip')) return 'zip';
+  if (filename.endsWith('.exe')) return 'exe';
+  return '';
+}
+
 function renderDownloadButton(container, platform, release) {
   if (!release) {
     container.innerHTML = `<a href="https://github.com/${GITHUB_REPO}/releases" target="_blank" rel="noopener" class="download-btn">View Releases</a>`;
@@ -66,7 +76,12 @@ function renderDownloadButton(container, platform, release) {
   const macArchMap = { arm64: ['arm64'], x64: ['x64'] };
   const archNames = os === 'linux' ? (linuxArchMap[arch] || ['x86_64']) : (macArchMap[arch] || ['x64']);
 
-  const getMatch = (platformOs, extPrefs) => {
+  const linuxExtPrefs = ['.deb', '.rpm', '.AppImage'];
+  const macExtPrefs = ['.dmg', '.zip'];
+  const winExtPrefs = ['.exe'];
+  const extPrefs = os === 'linux' ? linuxExtPrefs : os === 'mac' ? macExtPrefs : winExtPrefs;
+
+  const getMatch = (platformOs) => {
     for (const ext of extPrefs) {
       const match = assets.find(a =>
         a.name.includes(platformOs) &&
@@ -79,20 +94,40 @@ function renderDownloadButton(container, platform, release) {
   };
 
   let match = null;
-  if (os === 'mac') {
-    match = getMatch('mac', ['.dmg', '.zip']);
-  } else if (os === 'linux') {
-    match = getMatch('linux', ['.AppImage', '.deb', '.rpm']);
+  if (os === 'mac' || os === 'linux') {
+    match = getMatch(os);
   } else if (os === 'win') {
     match = assets.find(a => a.name.includes('win') && a.name.endsWith('.exe'));
   }
 
+  let html = '';
   if (match) {
     const size = match.size ? `<span class="download-size">${formatSize(match.size)}</span>` : '';
-    container.innerHTML = `<a href="${match.browser_download_url}" class="download-btn">Download ${size}</a>`;
+    html += `<a href="${match.browser_download_url}" class="download-btn">Download ${size}</a>`;
   } else {
-    container.innerHTML = `<a href="https://github.com/${GITHUB_REPO}/releases" target="_blank" rel="noopener" class="download-btn">Download</a>`;
+    html += `<a href="https://github.com/${GITHUB_REPO}/releases" target="_blank" rel="noopener" class="download-btn">Download</a>`;
   }
+
+  const allMatching = assets.filter(a => {
+    if (os === 'win') return a.name.includes('win') && a.name.endsWith('.exe');
+    if (!a.name.includes(os)) return false;
+    if (os === 'linux') return archNames.some(name => a.name.includes(name));
+    if (os === 'mac') return archNames.some(name => a.name.includes(name));
+    return false;
+  }).filter(a => match && a.name !== match.name);
+
+  if (allMatching.length > 0) {
+    html += '<div class="download-alt-list">';
+    html += '<span class="download-alt-label">Other formats:</span>';
+    for (const asset of allMatching) {
+      const label = getExtensionLabel(asset.name);
+      const size = asset.size ? ` (${formatSize(asset.size)})` : '';
+      html += `<a href="${asset.browser_download_url}" class="download-alt-link">${label}${size}</a>`;
+    }
+    html += '</div>';
+  }
+
+  container.innerHTML = html;
 }
 
 function renderChangelog(release) {
