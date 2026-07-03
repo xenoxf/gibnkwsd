@@ -1,0 +1,80 @@
+<div id="mobile-menu" class="mobile-menu">
+  <div class="mobile-menu-header">
+    <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+  <div class="mobile-menu-links">
+    <a href="#features">Features</a>
+    <a href="#download">Download</a>
+    <a href="https://github.com/xenoxf/openjunior" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener">Discord</a>
+  </div>
+  <a href="#download" class="neon-btn">Get Started</a>
+</div>
+
+<style is:global>
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.mobile-menu-close {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-menu-links a {
+  padding: 1rem 1.25rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, background 0.2s;
+}
+
+.mobile-menu-links a:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.mobile-menu .neon-btn {
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+</style>

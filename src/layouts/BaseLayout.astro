@@ -1,0 +1,40 @@
+---
+import '../styles/variables.css';
+import '../styles/reset.css';
+import '../styles/animations.css';
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="bUWA640cYC5xTz1CRqp5SlH2r6aH8-E_nhgSWgb3T9I" />
+    <title>OpenJunior — Your AI Code Agent</title>
+    <meta name="description" content="OpenJunior is a free, open-source AI code assistant. Download for macOS, Windows, and Linux." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OpenJunior",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Windows, Linux",
+      "description": "A free, open-source AI code assistant powered by OpenCode",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    })} />
+  </head>
+  <body>
+    <slot />
+    <script src="/download.js" defer></script>
+  </body>
+</html>
