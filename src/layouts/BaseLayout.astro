@@ -12,11 +12,11 @@ export interface Props {
 }
 
 const { title, description, canonical, keywords, ogImage } = Astro.props;
-const site = 'https://openjunior.dev';
+const site = 'https://glenker.vercel.app';
 const defaultOgImage = ogImage || '/og-image.png';
 const pageTitle = title;
 const pageCanonical = canonical || `${site}${Astro.url.pathname}`;
-const pageKeywords = keywords || 'asistente de IA, inteligencia artificial, AI code agent, desarrolladores, OpenJunior';
+const pageKeywords = keywords || 'asistente de IA, inteligencia artificial, AI code agent, desarrolladores, Glenker';
 const pageDescription = description;
 ---
 
@@ -30,7 +30,7 @@ const pageDescription = description;
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <meta name="keywords" content={keywords} />
-    <meta name="author" content="OpenJunior" />
+    <meta name="author" content="Glenker" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#ccff00" />
     <link rel="canonical" href={canonical || `${site}${Astro.url.pathname}`} />
@@ -49,7 +49,7 @@ const pageDescription = description;
     <meta property="og:image" content={`${site}${defaultOgImage}`} />
     <meta property="og:url" content={canonical || `${site}${Astro.url.pathname}`} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="OpenJunior" />
+    <meta property="og:site_name" content="Glenker" />
     <meta property="og:locale" content="es_ES" />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -60,10 +60,10 @@ const pageDescription = description;
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "OpenJunior",
+      "name": "Glenker",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "macOS, Windows, Linux",
-      "description": "OpenJunior es un asistente de inteligencia artificial para cualquier persona. Catálogo MCP, 1000+ integraciones con servicios, skills reutilizables.",
+      "description": "Glenker es un asistente de inteligencia artificial para cualquier persona. Catálogo MCP, 1000+ integraciones con servicios, skills reutilizables.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -71,15 +71,15 @@ const pageDescription = description;
       },
       "author": {
         "@type": "Organization",
-        "name": "OpenJunior"
+        "name": "Glenker"
       }
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "OpenJunior",
+      "name": "Glenker",
       "url": site,
-      "description": "OpenJunior es un asistente de inteligencia artificial para cualquier persona. Catálogo MCP, 1000+ integraciones con servicios, skills reutilizables.",
+      "description": "Glenker es un asistente de inteligencia artificial para cualquier persona. Catálogo MCP, 1000+ integraciones con servicios, skills reutilizables.",
       "foundingDate": "2025",
       "sameAs": [
         "https://discord.gg/ZYRSdnwwKA"
