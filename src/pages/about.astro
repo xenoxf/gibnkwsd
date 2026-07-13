@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Shell from '../components/layout/Shell.astro';
+import Navigation from '../components/layout/Navigation.astro';
+import MobileMenu from '../components/layout/MobileMenu.astro';
+import Footer from '../components/layout/Footer.astro';
+import '../styles/shared.css';
+import '../styles/responsive.css';
+---
+
+<BaseLayout
+  title="Sobre OpenJunior — Asistente de IA para Todos"
+  description="OpenJunior es un asistente de inteligencia artificial para cualquier persona. Catálogo MCP, 1000+ integraciones con servicios, skills reutilizables y multi-dispositivo."
+  canonical="https://openjunior.dev/about"
+  keywords="OpenJunior, asistente de IA, inteligencia artificial, MCP, integraciones, Composio, skills, Google"
+>
+  <div class="noise"></div>
+  <div class="shell">
+    <div class="shell-grid"></div>
+    <div class="glow-sphere glow-sphere--lime"></div>
+    <div class="glow-sphere glow-sphere--emerald"></div>
+
+    <nav id="main-nav" class="nav">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">
+          <span class="nav-logo-box">OpenJunior</span>
+        </a>
+        <div class="nav-pill">
+          <a href="/#features">Features</a>
+          <a href="/#download">Download</a>
+        </div>
+        <div class="nav-right">
+          <div class="status-tag">
+            <span class="status-dot"></span>
+            System Online
+          </div>
+          <a href="/#download" class="neon-btn">
+            Get Started
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="about-hero">
+      <span class="section-label">// Sobre OpenJunior</span>
+      <h1 class="about-title">Asistente de <span class="gradient-text">Inteligencia Artificial</span> para Todos</h1>
+      <p class="about-desc">
+        OpenJunior es un asistente de IA para cualquier persona. Conecta tus servicios favoritos,
+        instala herramientas con un clic desde el catálogo MCP, y automatiza tareas con skills reutilizables.
+        Todo desde una interfaz visual en desktop, web o móvil.
+      </p>
+    </section>
+
+    <section class="about-content">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>¿Qué es OpenJunior?</h2>
+          <p>
+            OpenJunior es un asistente de inteligencia artificial para cualquier persona, no solo para desarrolladores.
+            Nace con la visión de democratizar el acceso a los agentes de IA, llevando la experiencia de los asistentes
+            de código al usuario común.
+          </p>
+          <p>
+            Integra un catálogo de MCPs (Model Context Protocol) donde puedes navegar e instalar herramientas
+            con un clic — como los conectores de Claude. Además, conecta con más de 1000 servicios a través
+            de Composio: Gmail, Slack, Google Drive, Notion y muchos más.
+          </p>
+          <h2>Características principales</h2>
+          <ul>
+            <li><strong>Catálogo MCP:</strong> Navega e instala servidores MCP con un clic. Búsqueda, filtros, OAuth integrado.</li>
+            <li><strong>1000+ Integraciones:</strong> Conecta tus servicios favoritos vía Composio con OAuth. Gmail, Slack, Google Drive, Notion.</li>
+            <li><strong>Skills Reutilizables:</strong> Crea, instala y comparte automatizaciones entre proyectos.</li>
+            <li><strong>Multi-dispositivo:</strong> Desktop, web, PWA y móvil. Túneles Cloudflare con QR.</li>
+            <li><strong>Modo voz:</strong> Entrada por voz y respuestas en voz alta para flujos manos libres.</li>
+            <li><strong>Google Ecosystem:</strong> Inicio de sesión con Google, MCPs de Google, modelos Gemini.</li>
+          </ul>
+        </div>
+        <div class="about-sidebar">
+          <div class="about-card">
+            <h3>Detalles</h3>
+            <ul>
+              <li><strong>Plataformas:</strong> macOS, Windows, Linux</li>
+              <li><strong>Precio:</strong> Gratuito</li>
+              <li><strong>Idiomas:</strong> Español, Inglés, Portugués, Francés, Coreano y más</li>
+              <li><strong>Requiere:</strong> Node.js 22+</li>
+            </ul>
+          </div>
+          <div class="about-card">
+            <h3>Enlaces</h3>
+            <ul>
+              <li><a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer">Discord</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style is:global>
+.about-hero {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.about-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.about-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 2rem 5rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-text h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.about-text ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-text ul li {
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.about-text ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.about-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+}
+
+.about-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.about-card ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.about-card ul li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.about-card ul li strong {
+  color: var(--text-primary);
+}
+
+.about-card a {
+  color: var(--accent);
+  transition: opacity 0.2s;
+}
+
+.about-card a:hover {
+  opacity: 0.8;
+}
+</style>

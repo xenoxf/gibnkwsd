@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NoiseOverlay from '../components/ui/NoiseOverlay.astro';
+import Shell from '../components/layout/Shell.astro';
+import Navigation from '../components/layout/Navigation.astro';
+import MobileMenu from '../components/layout/MobileMenu.astro';
+import Download from '../components/sections/Download.astro';
+import Cta from '../components/sections/Cta.astro';
+import Footer from '../components/layout/Footer.astro';
+import '../styles/shared.css';
+import '../styles/responsive.css';
+---
+
+<BaseLayout
+  title="Descargar OpenJunior — Asistente de IA Gratis"
+  description="Descarga OpenJunior gratis para macOS, Windows y Linux. Asistente de inteligencia artificial con catálogo MCP, 1000+ integraciones y skills reutilizables."
+  canonical="https://openjunior.dev/download"
+  keywords="descargar OpenJunior, asistente de IA gratis, MCP, integraciones, Composio, skills, inteligencia artificial"
+>
+  <div class="noise"></div>
+  <div class="shell">
+    <div class="shell-grid"></div>
+    <div class="glow-sphere glow-sphere--lime"></div>
+    <div class="glow-sphere glow-sphere--emerald"></div>
+
+    <nav id="main-nav" class="nav">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">
+          <span class="nav-logo-box">OpenJunior</span>
+        </a>
+        <div class="nav-pill">
+          <a href="/#features">Features</a>
+          <a href="/#download">Download</a>
+        </div>
+        <div class="nav-right">
+          <div class="status-tag">
+            <span class="status-dot"></span>
+            System Online
+          </div>
+          <a href="/#download" class="neon-btn">
+            Get Started
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="download-hero">
+      <span class="section-label">// Descargar</span>
+      <h1 class="download-hero-title">Descarga <span class="gradient-text">OpenJunior</span></h1>
+      <p class="download-hero-desc">
+        El asistente de inteligencia artificial para cualquier persona. Catálogo MCP,
+        1000+ integraciones con servicios, skills reutilizables. Gratis, sin registro.
+      </p>
+    </section>
+
+    <Download />
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style is:global>
+.download-hero {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 2rem 0;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.download-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.download-hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+</style>
