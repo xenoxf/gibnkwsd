@@ -1,73 +1,32 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import NoiseOverlay from '../components/ui/NoiseOverlay.astro';
-import Shell from '../components/layout/Shell.astro';
-import Navigation from '../components/layout/Navigation.astro';
-import MobileMenu from '../components/layout/MobileMenu.astro';
-import Hero from '../components/sections/Hero.astro';
-import Download from '../components/sections/Download.astro';
-import Bento from '../components/sections/Bento.astro';
-import Features from '../components/sections/Features.astro';
-import Methodology from '../components/sections/Methodology.astro';
-import Changelog from '../components/sections/Changelog.astro';
-import Cta from '../components/sections/Cta.astro';
-import Footer from '../components/layout/Footer.astro';
-import '../styles/shared.css';
-import '../styles/responsive.css';
+import { SITE } from '../services/config.js';
 ---
 
-<BaseLayout
-  title="Glenker — Asistente de IA para Todos"
-  description="Glenker es un asistente de inteligencia artificial para cualquier persona. Catálogo MCP, 1000+ integraciones con servicios, skills reutilizables. Descarga gratis."
-  keywords="Glenker, asistente de IA, inteligencia artificial, MCP, integraciones, Composio, skills, Google, AI para todos"
->
-  <NoiseOverlay />
-  <Shell>
-    <Navigation />
-    <MobileMenu />
-    <Hero />
-    <Download />
-    <Bento />
-    <Features />
-    <Methodology />
-    <Changelog />
-    <Cta />
-    <Footer />
-  </Shell>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{SITE.name} — {SITE.tagline}</title>
+  <meta name="description" content={SITE.description} />
 
-  <script>
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const menuClose = document.getElementById('mobile-menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
+  <meta property="og:title" content="{SITE.name} — {SITE.tagline}" />
+  <meta property="og:description" content={SITE.description} />
+  <meta property="og:url" content={SITE.url} />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    function toggleMenu() {
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    }
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', toggleMenu);
-      if (menuClose) menuClose.addEventListener('click', toggleMenu);
-
-      mobileMenu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', toggleMenu);
-      });
-    }
-
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
-
-    revealElements.forEach((el) => revealObserver.observe(el));
-  </script>
-</BaseLayout>
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/navbar.css" />
+  <link rel="stylesheet" href="/src/styles/hero.css" />
+  <link rel="stylesheet" href="/src/styles/testimonial.css" />
+  <link rel="stylesheet" href="/src/styles/download.css" />
+  <link rel="stylesheet" href="/src/styles/animations.css" />
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
