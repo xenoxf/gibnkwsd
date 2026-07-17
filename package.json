@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "test": "node --experimental-vm-modules tests/run.js"
+    "preview": "astro preview"
   },
-  "devDependencies": {
-    "astro": "^5.18.2"
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^5.18.0"
   }
 }

@@ -1,0 +1,131 @@
+<section id="download" class="download">
+  <div class="section-header">
+        <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">Download <span class="gradient-text">Glenker</span></h2>
+    <p class="section-desc" style="margin-top: 0.75rem;">Consigue la última versión para tu plataforma. Gratis para siempre. Sin registro.</p>
+  </div>
+
+  <div id="os-detection"></div>
+  <div id="version-info"></div>
+
+  <div class="download-grid" id="platform-cards">
+    <div class="download-card reveal reveal-delay-1">
+      <span class="download-card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <rect x="6" y="4" width="28" height="32" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+          <circle cx="20" cy="28" r="3" fill="currentColor" opacity="0.6"/>
+        </svg>
+      </span>
+      <h3>macOS</h3>
+      <p class="download-card-arch">Apple Silicon &amp; Intel</p>
+      <p class="download-card-type">DMG Installer</p>
+      <div id="mac-download">
+        <div class="skeleton" style="margin: 0 auto;"></div>
+      </div>
+    </div>
+
+    <div class="download-card reveal reveal-delay-2">
+      <span class="download-card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <rect x="4" y="4" width="32" height="26" rx="3" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+          <rect x="10" y="30" width="20" height="3" rx="1" fill="currentColor" opacity="0.6"/>
+        </svg>
+      </span>
+      <h3>Windows</h3>
+      <p class="download-card-arch">Windows 10 / 11 (64-bit)</p>
+      <p class="download-card-type">NSIS Installer (.exe)</p>
+      <div id="win-download">
+        <div class="skeleton" style="margin: 0 auto;"></div>
+      </div>
+    </div>
+
+    <div class="download-card reveal reveal-delay-3">
+      <span class="download-card-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path d="M8 20L20 4l12 16H8z" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+          <rect x="16" y="22" width="8" height="12" rx="1" fill="currentColor" opacity="0.6"/>
+        </svg>
+      </span>
+      <h3>Linux</h3>
+      <p class="download-card-arch">AppImage &bull; deb &bull; rpm</p>
+      <p class="download-card-type">All Distributions</p>
+      <div id="linux-download">
+        <div class="skeleton" style="margin: 0 auto;"></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style is:global>
+.download {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 2rem;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.download-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 2rem;
+  text-align: center;
+  transition: border-color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.download-card:hover {
+  border-color: rgba(204, 255, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.download-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.download-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.download-card-arch {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.download-card-type {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  margin-bottom: 1.5rem;
+}
+
+.download-footer {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.download-footer a {
+  color: var(--accent);
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.download-footer a:hover {
+  opacity: 0.8;
+}
+</style>
