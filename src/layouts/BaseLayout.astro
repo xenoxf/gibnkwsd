@@ -13,7 +13,7 @@ export interface Props {
 
 const { title, description, canonical, keywords, ogImage } = Astro.props;
 const site = 'https://glenker.vercel.app';
-const defaultOgImage = ogImage || '/og-image.png';
+  const defaultOgImage = ogImage || '/og-image.svg';
 const pageTitle = title;
 const pageCanonical = canonical || `${site}${Astro.url.pathname}`;
 const pageKeywords = keywords || 'asistente de IA, inteligencia artificial, AI code agent, desarrolladores, Glenker';
@@ -32,7 +32,7 @@ const pageDescription = description;
     <meta name="keywords" content={keywords} />
     <meta name="author" content="Glenker" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#ccff00" />
+    <meta name="theme-color" content="#f7efe6" />
     <link rel="canonical" href={canonical || `${site}${Astro.url.pathname}`} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -40,7 +40,7 @@ const pageDescription = description;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
 

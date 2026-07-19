@@ -10,6 +10,7 @@ import Bento from '../components/sections/Bento.astro';
 import Features from '../components/sections/Features.astro';
 import Methodology from '../components/sections/Methodology.astro';
 import Changelog from '../components/sections/Changelog.astro';
+import Faq from '../components/sections/Faq.astro';
 import Cta from '../components/sections/Cta.astro';
 import Footer from '../components/layout/Footer.astro';
 import '../styles/shared.css';
@@ -17,57 +18,103 @@ import '../styles/responsive.css';
 ---
 
 <BaseLayout
-  title="Glenker — Asistente de IA para Todos"
-  description="Glenker es un asistente de inteligencia artificial para cualquier persona. Catálogo MCP, 1000+ integraciones con servicios, skills reutilizables. Descarga gratis."
-  keywords="Glenker, asistente de IA, inteligencia artificial, MCP, integraciones, Composio, skills, Google, AI para todos, Opencode Desktop, Claude Code Desktop gratis"
+  title="Glenker — Tu asistente de IA para el día a día"
+  description="Glenker es un asistente de inteligencia artificial para cualquiera. Conecta tus apps, guarda rutinas y deja que haga el trabajo pesado. Catálogo MCP, 1000+ integraciones y skills reutilizables. Descarga gratis."
+  keywords="Glenker, asistente de IA, inteligencia artificial, MCP, integraciones, Composio, skills, Google, AI para todos"
 >
   <NoiseOverlay />
   <Shell>
     <Navigation />
     <MobileMenu />
-    <Hero />
-    <Download />
-    <Bento />
-    <Features />
-    <Methodology />
-    <Changelog />
-    <Cta />
+    <main id="top">
+      <Hero />
+      <Download />
+      <Bento />
+      <Features />
+      <Methodology />
+      <Changelog />
+      <Faq />
+      <Cta />
+    </main>
     <Footer />
   </Shell>
 
   <script>
+    // --- Menú móvil accesible (toggle + Esc + focus trap) ---
     const menuBtn = document.getElementById('mobile-menu-btn');
     const menuClose = document.getElementById('mobile-menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    function toggleMenu() {
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    let lastFocused: Element | null = null;
+
+    function openMenu() {
+      if (!mobileMenu) return;
+      lastFocused = document.activeElement;
+      mobileMenu.hidden = false;
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      menuBtn?.setAttribute('aria-expanded', 'true');
+      menuClose?.focus();
+    }
+
+    function closeMenu() {
+      if (!mobileMenu) return;
+      mobileMenu.classList.remove('open');
+      mobileMenu.hidden = true;
+      document.body.style.overflow = '';
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      (lastFocused as HTMLElement | null)?.focus();
     }
 
     if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', toggleMenu);
-      if (menuClose) menuClose.addEventListener('click', toggleMenu);
+      menuBtn.addEventListener('click', openMenu);
+      menuClose?.addEventListener('click', closeMenu);
 
       mobileMenu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', toggleMenu);
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (!mobileMenu.classList.contains('open')) return;
+        if (e.key === 'Escape') {
+          closeMenu();
+          return;
+        }
+        if (e.key === 'Tab') {
+          const focusable = mobileMenu.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled])'
+          );
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
       });
     }
 
+    // --- Scroll reveal ---
     const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
-
-    revealElements.forEach((el) => revealObserver.observe(el));
+    if ('IntersectionObserver' in window && revealElements.length) {
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+      revealElements.forEach((el) => revealObserver.observe(el));
+    } else {
+      revealElements.forEach((el) => el.classList.add('visible'));
+    }
   </script>
 </BaseLayout>

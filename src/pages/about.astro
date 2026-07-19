@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import NoiseOverlay from '../components/ui/NoiseOverlay.astro';
+import Shell from '../components/layout/Shell.astro';
 import Navigation from '../components/layout/Navigation.astro';
 import MobileMenu from '../components/layout/MobileMenu.astro';
 import Footer from '../components/layout/Footer.astro';
@@ -13,43 +15,18 @@ import '../styles/responsive.css';
   canonical="https://glenker.vercel.app/about"
   keywords="Glenker, asistente de IA, inteligencia artificial, MCP, integraciones, Composio, skills, Google"
 >
-  <div class="noise"></div>
-  <div class="shell">
-    <div class="shell-grid"></div>
-    <div class="glow-sphere glow-sphere--lime"></div>
-    <div class="glow-sphere glow-sphere--emerald"></div>
-
-    <nav id="main-nav" class="nav">
-      <div class="nav-inner">
-        <a href="/" class="nav-logo">
-          <span class="nav-logo-box">Glenker</span>
-        </a>
-        <div class="nav-pill">
-          <a href="/#features">Features</a>
-          <a href="/#download">Download</a>
-        </div>
-        <div class="nav-right">
-          <div class="status-tag">
-            <span class="status-dot"></span>
-            System Online
-          </div>
-          <a href="/#download" class="neon-btn">
-            Get Started
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </nav>
+  <NoiseOverlay />
+  <Shell>
+    <Navigation />
+    <MobileMenu />
 
     <section class="about-hero">
       <span class="section-label">// Sobre Glenker</span>
-      <h1 class="about-title">Asistente de <span class="gradient-text">Inteligencia Artificial</span> para Todos</h1>
+      <h1 class="about-title">Un asistente de <span class="gradient-text">Inteligencia Artificial</span> para cualquiera</h1>
       <p class="about-desc">
-        Glenker es un asistente de IA para cualquier persona. Conecta tus servicios favoritos,
-         instala herramientas con un clic desde el catálogo MCP, y automatiza tareas con skills reutilizables.
-        Todo desde una interfaz visual en desktop, web o móvil.
+        Glenker nació de una molestia simple: la IA buena estaba guardada para quienes saben programar.
+        Quisimos una herramienta que cualquier persona abra, conecte sus apps y empiece a usar el mismo día,
+        sin cursos ni tutoriales de dos horas.
       </p>
     </section>
 
@@ -58,26 +35,26 @@ import '../styles/responsive.css';
         <div class="about-text">
           <h2>¿Qué es Glenker?</h2>
           <p>
-            Glenker es un asistente de inteligencia artificial para cualquier persona, no solo para desarrolladores.
-            Nace con la visión de democratizar el acceso a los agentes de IA, llevando la experiencia de los asistentes
-            de código al usuario común.
+            Es un asistente de inteligencia artificial para cualquiera, no solo para quienes escriben código.
+            La idea es sencilla: que la potencia de los agentes de IA deje de ser algo de nicho y llegue a la gente
+            que solo quiere que sus tareas se hagan.
           </p>
           <p>
-            Integra un catálogo de MCPs (Model Context Protocol) donde puedes navegar e instalar herramientas
-            con un clic — como los conectores de Claude. Además, conecta con más de 1000 servicios a través
-            de Composio: Gmail, Slack, Google Drive, Notion y muchos más.
+            Trae un catálogo de herramientas MCP donde instalas lo que necesitas con un clic, y se conecta con más
+            de mil servicios a través de Composio: Gmail, Slack, Google Drive, Notion y muchos más. Le das permiso
+            una vez y ya puede trabajar por ti.
           </p>
           <h2>Características principales</h2>
           <ul>
-            <li><strong>Catálogo MCP:</strong> Navega e instala servidores MCP con un clic. Búsqueda, filtros, OAuth integrado.</li>
-            <li><strong>1000+ Integraciones:</strong> Conecta tus servicios favoritos vía Composio con OAuth. Gmail, Slack, Google Drive, Notion.</li>
-            <li><strong>Skills Reutilizables:</strong> Crea, instala y comparte automatizaciones entre proyectos.</li>
-            <li><strong>Multi-dispositivo:</strong> Desktop, web, PWA y móvil. Túneles Cloudflare con QR.</li>
-            <li><strong>Modo voz:</strong> Entrada por voz y respuestas en voz alta para flujos manos libres.</li>
-            <li><strong>Google Ecosystem:</strong> Inicio de sesión con Google, MCPs de Google, modelos Gemini.</li>
+          <li><strong>Catálogo MCP:</strong> Instalas servidores MCP con un clic. Con búsqueda, filtros y permisos incluidos.</li>
+          <li><strong>1000+ integraciones:</strong> Conectas tus servicios favoritos con un par de clics. Gmail, Slack, Google Drive, Notion.</li>
+          <li><strong>Skills reutilizables:</strong> Creas, guardas y compartes automatizaciones entre proyectos.</li>
+          <li><strong>Multi-dispositivo:</strong> Escritorio, web, PWA y móvil. Te conectas desde otro equipo con un código QR.</li>
+          <li><strong>Modo voz:</strong> Le hablas y te contesta en voz alta, para cuando no quieres teclear.</li>
+          <li><strong>Ecosistema Google:</strong> Entras con tu cuenta de Google y usa sus modelos y herramientas.</li>
           </ul>
         </div>
-        <div class="about-sidebar">
+        <aside class="about-sidebar">
           <div class="about-card">
             <h3>Detalles</h3>
             <ul>
@@ -91,14 +68,15 @@ import '../styles/responsive.css';
             <h3>Enlaces</h3>
             <ul>
               <li><a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer">Discord</a></li>
+              <li><a href="/#download">Descargar</a></li>
             </ul>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
     <Footer />
-  </div>
+  </Shell>
 </BaseLayout>
 
 <style is:global>
@@ -117,6 +95,7 @@ import '../styles/responsive.css';
   font-weight: 700;
   letter-spacing: -0.06em;
   line-height: 1.1;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
 }
 
@@ -147,6 +126,7 @@ import '../styles/responsive.css';
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: -0.04em;
+  color: var(--text-primary);
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
@@ -175,7 +155,7 @@ import '../styles/responsive.css';
 }
 
 .about-text ul li::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0.6em;
@@ -192,12 +172,15 @@ import '../styles/responsive.css';
 }
 
 .about-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
   padding: 1.5rem;
+  transition: border-color var(--transition) var(--ease-out);
+}
+
+.about-card:hover {
+  border-color: var(--accent);
 }
 
 .about-card h3 {
@@ -205,6 +188,7 @@ import '../styles/responsive.css';
   font-weight: 600;
   font-size: 1rem;
   letter-spacing: -0.03em;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
@@ -227,11 +211,17 @@ import '../styles/responsive.css';
 }
 
 .about-card a {
-  color: var(--accent);
+  color: var(--accent-active);
   transition: opacity 0.2s;
 }
 
 .about-card a:hover {
-  opacity: 0.8;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

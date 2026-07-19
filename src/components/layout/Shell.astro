@@ -1,7 +1,7 @@
 <div class="shell">
   <div class="shell-grid"></div>
-  <div class="glow-sphere glow-sphere--lime"></div>
-  <div class="glow-sphere glow-sphere--emerald"></div>
+  <div class="glow-sphere glow-sphere--accent"></div>
+  <div class="glow-sphere glow-sphere--coffee"></div>
   <slot />
 </div>
 
@@ -12,7 +12,7 @@
   margin: 0 auto;
   background: var(--bg-shell);
   border-radius: var(--radius-lg);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-lg);
   overflow: hidden;
   min-height: 100vh;
 }
@@ -22,12 +22,11 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at 50% 20%, black 30%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse at 50% 20%, black 30%, transparent 70%);
+  background-image: linear-gradient(var(--border-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 20%, transparent 75%);
 }
 
 .glow-sphere {
@@ -38,19 +37,19 @@
   z-index: 0;
 }
 
-.glow-sphere--lime {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(204, 255, 0, 0.08) 0%, transparent 70%);
-  top: -200px;
-  right: -100px;
+.glow-sphere--accent {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  top: -220px;
+  right: -120px;
 }
 
-.glow-sphere--emerald {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
-  bottom: -100px;
-  left: -100px;
+.glow-sphere--coffee {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(154, 109, 69, 0.1) 0%, transparent 70%);
+  bottom: -140px;
+  left: -120px;
 }
 </style>

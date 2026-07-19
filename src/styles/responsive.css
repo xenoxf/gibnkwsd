@@ -1,26 +1,4 @@
 @media (max-width: 1100px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .hero-right {
-    min-height: 350px;
-  }
-
-  .mockup {
-    height: 400px;
-  }
-
-  .methodology-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .methodology-right {
-    order: -1;
-  }
-
   .bento-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -36,15 +14,6 @@
 }
 
 @media (max-width: 900px) {
-  .nav-pill,
-  .nav-right .status-tag {
-    display: none;
-  }
-
-  .mobile-btn {
-    display: block;
-  }
-
   .download-grid {
     grid-template-columns: 1fr;
     max-width: 400px;
@@ -67,6 +36,15 @@
   .bento-card--tall {
     grid-column: span 2;
     grid-row: span 1;
+  }
+
+  .methodology-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .methodology-right {
+    order: -1;
   }
 
   .footer-grid {
@@ -97,10 +75,6 @@
     padding-right: 1.25rem;
   }
 
-  .hero-title {
-    font-size: clamp(2.5rem, 12vw, 3.5rem);
-  }
-
   .features-grid {
     grid-template-columns: 1fr;
   }
@@ -114,31 +88,12 @@
     grid-column: span 1;
   }
 
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
+  .hero-title {
+    font-size: clamp(3.5rem, 16vw, 5rem);
   }
 
-  .hero-actions .neon-btn {
-    justify-content: center;
-  }
-
-  .methodology {
-    border-radius: 2rem 2rem 0 0;
-  }
-
-  .methodology-portrait {
-    width: 200px;
-    height: 200px;
-    font-size: 3.5rem;
-  }
-
-  .mockup-card--floating {
-    display: none;
-  }
-
-  .ai-cursor-label {
-    display: none;
+  .about-grid {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -1,43 +1,41 @@
 <section class="features">
-  <div class="section-header">
-    <span class="section-label">// Por qué Glenker</span>
-    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">Hecho para <span class="gradient-text">todos</span></h2>
+  <div class="section-header section-header--center">
+    <span class="section-label">// Por qué la gente se queda</span>
+    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">Hecho para <span class="gradient-text">gente de verdad</span></h2>
+    <p class="section-desc">No tuvimos que aprender a programar para construirlo, y tú no tienes que aprender para usarlo.</p>
   </div>
 
   <div class="features-grid">
-    <div class="feature-card reveal reveal-delay-1">
-      <div class="feature-card-icon">
+    <div class="feature-card glass-card reveal reveal-delay-1">
+      <div class="feature-card-icon" aria-hidden="true">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <rect x="2" y="3" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M6 19h8M10 15v4" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="3" y="3" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <h3>Catálogo MCP</h3>
-      <p>Navega e instala herramientas de IA con un clic. Como los conectores de Claude, pero en un catálogo visual con búsqueda y filtros.</p>
+      <h3>Un catálogo que se entiende a la primera</h3>
+      <p>Abres, buscas la herramienta que necesitas y le das instalar. Nada de archivos ni comandos: lo que ves es lo que obtienes.</p>
     </div>
 
-    <div class="feature-card reveal reveal-delay-2">
-      <div class="feature-card-icon">
+    <div class="feature-card glass-card reveal reveal-delay-2">
+      <div class="feature-card-icon" aria-hidden="true">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <rect x="2" y="3" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M6 19h8M10 15v4" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 2v6m0 0l3-3m-3 3L7 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 14a6 6 0 0012 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </div>
-      <h3>1000+ Integraciones</h3>
-      <p>Conecta Gmail, Slack, Google Drive, Notion y más vía Composio. Tu asistente de IA actúa sobre tus servicios favoritos.</p>
+      <h3>Más de mil formas de ahorrarte el trabajo</h3>
+      <p>Conecta tus cuentas y deja que Glenker actúe sobre ellas: te contesta correos, organiza archivos y te avisa de lo importante. Tú solo le pides el favor.</p>
     </div>
 
-    <div class="feature-card reveal reveal-delay-3">
-      <div class="feature-card-icon">
+    <div class="feature-card glass-card reveal reveal-delay-3">
+      <div class="feature-card-icon" aria-hidden="true">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M12 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M2 10h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M2 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M2 18h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M4 16l6-6-6-6M12 18h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <h3>Skills Reutilizables</h3>
-      <p>Crea, instala y comparte automatizaciones. Skills reutilizables entre proyectos con un catálogo integrado.</p>
+      <h3>Rutinas que armas una vez</h3>
+      <p>Una automatización bien hecha se usa mil veces. La creas, la guardas y la traes a cualquier proyecto nuevo. Así dejas de repetir lo mismo.</p>
     </div>
   </div>
 </section>
@@ -53,46 +51,62 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .feature-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
   padding: 2rem;
-  transition: border-color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+  transition: border-color var(--transition) var(--ease-out),
+    transform var(--transition) var(--ease-out),
+    box-shadow var(--transition) var(--ease-out);
 }
 
 .feature-card:hover {
-  border-color: rgba(204, 255, 0, 0.4);
+  border-color: var(--accent);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .feature-card-icon {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(204, 255, 0, 0.1);
+  background: var(--accent-soft);
   border-radius: 0.75rem;
-  color: var(--accent);
+  color: var(--accent-active);
   margin-bottom: 1.25rem;
 }
 
 .feature-card h3 {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   letter-spacing: -0.03em;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .feature-card p {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

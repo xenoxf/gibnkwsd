@@ -69,7 +69,7 @@ function getExtensionLabel(filename) {
 
 function renderDownloadButton(container, platform, release) {
   if (!release) {
-    container.innerHTML = `<a href="https://github.com/${GITHUB_REPO}/releases" target="_blank" rel="noopener" class="download-btn">View Releases</a>`;
+    container.innerHTML = `<a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer" class="download-fallback">Escríbenos en Discord</a>`;
     return;
   }
 
@@ -119,9 +119,9 @@ function renderDownloadButton(container, platform, release) {
     const size = match.size
       ? `<span class="download-size">${formatSize(match.size)}</span>`
       : "";
-    html += `<a href="${match.browser_download_url}" class="download-btn">Download ${size}</a>`;
+    html += `<a href="${match.browser_download_url}" class="download-btn" data-platform="${platform.os}">Descargar ${size}</a>`;
   } else {
-    html += `<a href="https://github.com/${GITHUB_REPO}/releases" target="_blank" rel="noopener" class="download-btn">Download</a>`;
+    html += `<a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer" class="download-fallback">Escríbenos en Discord</a>`;
   }
 
   const allMatching = assets
@@ -156,7 +156,7 @@ function renderChangelog(release) {
 
   if (!release) {
     container.innerHTML =
-      '<p style="color: var(--text-muted); font-size: 0.9rem;">Unable to load changelog.</p>';
+      '<p class="changelog-empty">No pudimos cargar el changelog ahora mismo. <a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer">Escríbenos en Discord</a> y te pasamos las novedades.</p>';
     return;
   }
 
@@ -166,7 +166,8 @@ function renderChangelog(release) {
     .filter((l) => l.trim().startsWith("-") || l.trim().startsWith("*"));
 
   if (lines.length === 0) {
-    container.innerHTML = `<p style="color: var(--text-muted); font-size: 0.9rem;">${body.slice(0, 200) || "No changelog available."}</p>`;
+    const fallback = body.slice(0, 200) || "Sin notas de cambio disponibles.";
+    container.innerHTML = `<p class="changelog-empty">${fallback}</p>`;
     return;
   }
 
@@ -177,6 +178,9 @@ function renderChangelog(release) {
       return `<div class="changelog-item"><span class="changelog-bullet"></span><span class="changelog-text">${text}</span></div>`;
     })
     .join("");
+
+  container.innerHTML +=
+    `<div class="changelog-more"><a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer">Cuéntanos en Discord</a></div>`;
 }
 
 function showOSDetection(platform) {

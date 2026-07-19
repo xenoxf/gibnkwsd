@@ -1,19 +1,19 @@
-<section class="section" id="changelog">
-  <div class="section-header">
-    <span class="section-label">// Updates</span>
-    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">What's <span class="gradient-text">New</span></h2>
-    <p class="section-desc" style="margin-top: 0.75rem;">Latest changes and improvements in the most recent release.</p>
+<section class="section section--changelog" id="changelog">
+  <div class="section-header section-header--center">
+    <span class="section-label">// Novedades</span>
+    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">Lo último que <span class="gradient-text">cambiamos</span></h2>
+    <p class="section-desc">Cada semana mejoramos algo. Esto es lo que trajo la versión más reciente.</p>
   </div>
 
-  <div class="changelog-card reveal" id="changelog-section">
+  <div class="changelog-card glass-card" id="changelog-section">
     <div class="changelog-header">
-      <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
         <path d="M4 4h12v12H4V4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
         <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
       </svg>
       Changelog
     </div>
-    <div id="changelog-content" class="changelog-content">
+    <div id="changelog-content" class="changelog-content" aria-live="polite">
       <div class="skeleton" style="width: 30%"></div>
       <div class="skeleton" style="width: 50%"></div>
       <div class="skeleton" style="width: 90%"></div>
@@ -23,14 +23,16 @@
 </section>
 
 <style is:global>
+.section--changelog {
+  padding-top: 0;
+}
+
 .changelog-card {
   max-width: 560px;
   margin: 2rem auto 0;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 
@@ -39,7 +41,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border-light);
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-secondary);
@@ -66,7 +68,7 @@
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  margin-top: 0.5rem;
+  margin-top: 0.55rem;
   flex-shrink: 0;
 }
 
@@ -76,14 +78,20 @@
   line-height: 1.6;
 }
 
+.changelog-empty {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
 .changelog-more {
   padding: 1rem 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--border-light);
   text-align: center;
 }
 
 .changelog-more a {
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 0.85rem;
   font-weight: 500;
   transition: opacity 0.2s;
@@ -91,5 +99,6 @@
 
 .changelog-more a:hover {
   opacity: 0.8;
+  text-decoration: underline;
 }
 </style>

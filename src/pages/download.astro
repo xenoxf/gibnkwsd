@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NoiseOverlay from '../components/ui/NoiseOverlay.astro';
+import Shell from '../components/layout/Shell.astro';
 import Navigation from '../components/layout/Navigation.astro';
 import MobileMenu from '../components/layout/MobileMenu.astro';
 import Download from '../components/sections/Download.astro';
-import Cta from '../components/sections/Cta.astro';
 import Footer from '../components/layout/Footer.astro';
 import '../styles/shared.css';
 import '../styles/responsive.css';
@@ -16,48 +16,23 @@ import '../styles/responsive.css';
   canonical="https://glenker.vercel.app/download"
   keywords="descargar Glenker, asistente de IA gratis, MCP, integraciones, Composio, skills, inteligencia artificial"
 >
-  <div class="noise"></div>
-  <div class="shell">
-    <div class="shell-grid"></div>
-    <div class="glow-sphere glow-sphere--lime"></div>
-    <div class="glow-sphere glow-sphere--emerald"></div>
-
-    <nav id="main-nav" class="nav">
-      <div class="nav-inner">
-        <a href="/" class="nav-logo">
-          <span class="nav-logo-box">Glenker</span>
-        </a>
-        <div class="nav-pill">
-          <a href="/#features">Features</a>
-          <a href="/#download">Download</a>
-        </div>
-        <div class="nav-right">
-          <div class="status-tag">
-            <span class="status-dot"></span>
-            System Online
-          </div>
-          <a href="/#download" class="neon-btn">
-            Get Started
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </nav>
+  <NoiseOverlay />
+  <Shell>
+    <Navigation />
+    <MobileMenu />
 
     <section class="download-hero">
       <span class="section-label">// Descargar</span>
       <h1 class="download-hero-title">Descarga <span class="gradient-text">Glenker</span></h1>
       <p class="download-hero-desc">
-        El asistente de inteligencia artificial para cualquier persona. Catálogo MCP,
-        1000+ integraciones con servicios, skills reutilizables. Gratis, sin registro.
+        El asistente de IA para cualquiera. Conecta tus apps, guarda tus rutinas y
+        deja que haga el trabajo pesado. Gratis y sin que te pidamos ni un correo.
       </p>
     </section>
 
     <Download />
     <Footer />
-  </div>
+  </Shell>
 </BaseLayout>
 
 <style is:global>
@@ -76,6 +51,7 @@ import '../styles/responsive.css';
   font-weight: 700;
   letter-spacing: -0.06em;
   line-height: 1.1;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 

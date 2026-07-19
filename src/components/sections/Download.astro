@@ -1,59 +1,61 @@
 <section id="download" class="download">
-  <div class="section-header">
-        <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">Download <span class="gradient-text">Glenker</span></h2>
-    <p class="section-desc" style="margin-top: 0.75rem;">Consigue la última versión para tu plataforma. Gratis para siempre. Sin registro.</p>
+  <div class="section-header section-header--center">
+    <span class="section-label">// Descargar</span>
+    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">Llévate <span class="gradient-text">Glenker</span> a tu equipo</h2>
+    <p class="section-desc">Elige tu sistema y descárgalo en segundos. Gratis, para siempre, y sin que te pidamos ni un correo.</p>
   </div>
 
-  <div id="os-detection"></div>
-  <div id="version-info"></div>
+  <div id="os-detection" class="os-detection" aria-live="polite"></div>
+  <div id="version-info" class="version-info"></div>
 
   <div class="download-grid" id="platform-cards">
-    <div class="download-card reveal reveal-delay-1">
-      <span class="download-card-icon">
+    <div class="download-card glass-card reveal reveal-delay-1">
+      <span class="download-card-icon" aria-hidden="true">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-          <rect x="6" y="4" width="28" height="32" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
-          <circle cx="20" cy="28" r="3" fill="currentColor" opacity="0.6"/>
+          <rect x="6" y="4" width="28" height="32" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="20" cy="28" r="3" fill="currentColor" opacity="0.7"/>
         </svg>
       </span>
       <h3>macOS</h3>
       <p class="download-card-arch">Apple Silicon &amp; Intel</p>
       <p class="download-card-type">DMG Installer</p>
-      <div id="mac-download">
+      <div id="mac-download" class="download-slot">
         <div class="skeleton" style="margin: 0 auto;"></div>
       </div>
     </div>
 
-    <div class="download-card reveal reveal-delay-2">
-      <span class="download-card-icon">
+    <div class="download-card glass-card reveal reveal-delay-2">
+      <span class="download-card-icon" aria-hidden="true">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-          <rect x="4" y="4" width="32" height="26" rx="3" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
-          <rect x="10" y="30" width="20" height="3" rx="1" fill="currentColor" opacity="0.6"/>
+          <rect x="4" y="4" width="32" height="26" rx="3" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <rect x="10" y="30" width="20" height="3" rx="1" fill="currentColor" opacity="0.7"/>
         </svg>
       </span>
       <h3>Windows</h3>
       <p class="download-card-arch">Windows 10 / 11 (64-bit)</p>
       <p class="download-card-type">NSIS Installer (.exe)</p>
-      <div id="win-download">
+      <div id="win-download" class="download-slot">
         <div class="skeleton" style="margin: 0 auto;"></div>
       </div>
     </div>
 
-    <div class="download-card reveal reveal-delay-3">
-      <span class="download-card-icon">
+    <div class="download-card glass-card reveal reveal-delay-3">
+      <span class="download-card-icon" aria-hidden="true">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-          <path d="M8 20L20 4l12 16H8z" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
-          <rect x="16" y="22" width="8" height="12" rx="1" fill="currentColor" opacity="0.6"/>
+          <path d="M8 20L20 4l12 16H8z" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <rect x="16" y="22" width="8" height="12" rx="1" fill="currentColor" opacity="0.7"/>
         </svg>
       </span>
       <h3>Linux</h3>
       <p class="download-card-arch">AppImage &bull; deb &bull; rpm</p>
-      <p class="download-card-type">All Distributions</p>
-      <div id="linux-download">
+      <p class="download-card-type">Todas las distribuciones</p>
+      <div id="linux-download" class="download-slot">
         <div class="skeleton" style="margin: 0 auto;"></div>
       </div>
     </div>
   </div>
 
+  <p class="download-foot">¿No ves tu sistema aquí? <a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer">Pídelo en Discord</a> y lo agregamos.</p>
 </section>
 
 <style is:global>
@@ -63,39 +65,47 @@
   padding: 5rem 2rem;
 }
 
+.os-detection {
+  text-align: center;
+  min-height: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.version-info {
+  text-align: center;
+  min-height: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
 .download-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .download-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-sm);
-  padding: 2rem;
   text-align: center;
-  transition: border-color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
-}
-
-.download-card:hover {
-  border-color: rgba(204, 255, 0, 0.4);
-  transform: translateY(-2px);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .download-card-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  display: block;
+  display: flex;
+  color: var(--accent);
 }
 
 .download-card h3 {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   letter-spacing: -0.03em;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
@@ -112,20 +122,36 @@
   margin-bottom: 1.5rem;
 }
 
-.download-footer {
+.download-slot {
+  min-height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.download-foot {
   text-align: center;
   margin-top: 2.5rem;
   font-size: 0.85rem;
   color: var(--text-secondary);
 }
 
-.download-footer a {
-  color: var(--accent);
+.download-foot a {
+  color: var(--accent-text);
   font-weight: 500;
-  transition: opacity 0.2s;
 }
 
-.download-footer a:hover {
-  opacity: 0.8;
+.download-foot a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .download-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
 }
 </style>

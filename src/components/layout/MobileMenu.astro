@@ -1,33 +1,35 @@
-<div id="mobile-menu" class="mobile-menu">
+<div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación" hidden>
   <div class="mobile-menu-header">
-    <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Cerrar menú">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
       </svg>
     </button>
   </div>
-  <div class="mobile-menu-links">
-    <a href="#features">Features</a>
-    <a href="#download">Download</a>
+  <nav class="mobile-menu-links" aria-label="Enlaces principales">
+    <a href="/#features">Features</a>
+    <a href="/#download">Download</a>
+    <a href="/about">Sobre Glenker</a>
     <a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer">Discord</a>
-  </div>
-  <a href="#download" class="neon-btn">Get Started</a>
+  </nav>
+  <a href="/#download" class="btn btn--primary mobile-menu-cta">Empezar</a>
 </div>
 
 <style is:global>
 .mobile-menu {
-  display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 2000;
-  background: rgba(0, 0, 0, 0.95);
+  background: var(--bg-shell);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   padding: 2rem;
+  display: flex;
   flex-direction: column;
+}
+
+.mobile-menu[hidden] {
+  display: none;
 }
 
 .mobile-menu.open {
@@ -48,6 +50,12 @@
   cursor: pointer;
   padding: 0.5rem;
   line-height: 1;
+  border-radius: 0.5rem;
+}
+
+.mobile-menu-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .mobile-menu-links {
@@ -69,11 +77,22 @@
 
 .mobile-menu-links a:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-hover);
 }
 
-.mobile-menu .neon-btn {
+.mobile-menu-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.mobile-menu-cta {
   margin-top: 1.5rem;
   justify-content: center;
+}
+
+@media (min-width: 901px) {
+  .mobile-menu {
+    display: none !important;
+  }
 }
 </style>
