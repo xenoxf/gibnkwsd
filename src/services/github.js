@@ -1,4 +1,4 @@
-export const GITHUB_REPO = 'xenoxf/openjunior';
+export const GITHUB_REPO = 'xenoxf/Glenker';
 
 export async function fetchLatestRelease() {
   try {

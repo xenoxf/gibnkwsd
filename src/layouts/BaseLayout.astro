@@ -16,7 +16,7 @@ const site = 'https://glenker.vercel.app';
   const defaultOgImage = ogImage || '/og-image.svg';
 const pageTitle = title;
 const pageCanonical = canonical || `${site}${Astro.url.pathname}`;
-const pageKeywords = keywords || 'asistente de IA, inteligencia artificial, AI code agent, desarrolladores, Glenker';
+const pageKeywords = keywords || 'agente de código, inteligencia artificial, AI code agent, desarrolladores, MCP, Glenker';
 const pageDescription = description;
 ---
 
@@ -63,31 +63,50 @@ const pageDescription = description;
       "name": "Glenker",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "macOS, Windows, Linux",
-      "description": "Glenker es un asistente de inteligencia artificial para cualquier persona. Catálogo MCP, 1000+ integraciones con servicios, skills reutilizables.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "Glenker"
-      }
-    })} />
+       "description": "Glenker es una interfaz visual y completa para agentes de código AI. Catálogo de MCPs, skills reutilizables, multi-dispositivo y acceso remoto. Open source y gratis.",
+       "offers": {
+         "@type": "Offer",
+         "price": "0",
+         "priceCurrency": "USD"
+       },
+       "author": {
+         "@type": "Organization",
+         "name": "Glenker"
+       }
+     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Glenker",
       "url": site,
-      "description": "Glenker es un asistente de inteligencia artificial para cualquier persona. Catálogo MCP, 1000+ integraciones con servicios, skills reutilizables.",
-      "foundingDate": "2025",
+       "description": "Glenker es una interfaz visual y completa para agentes de código AI. Catálogo de MCPs, skills reutilizables, multi-dispositivo y acceso remoto. Open source y gratis.",
+       "foundingDate": "2025",
       "sameAs": [
         "https://discord.gg/ZYRSdnwwKA"
       ]
     })} />
   </head>
   <body>
+    <div id="scroll-progress" aria-hidden="true"></div>
     <slot />
     <script src="/download.js" defer></script>
+    <script>
+      (function () {
+        var nav = document.getElementById('main-nav');
+        var bar = document.getElementById('scroll-progress');
+        function onScroll() {
+          var y = window.scrollY || document.documentElement.scrollTop || 0;
+          if (nav) nav.classList.toggle('scrolled', y > 8);
+          if (bar) {
+            var h = document.documentElement.scrollHeight - window.innerHeight;
+            var p = h > 0 ? y / h : 0;
+            bar.style.transform = 'scaleX(' + p + ')';
+          }
+        }
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+      })();
+    </script>
   </body>
 </html>

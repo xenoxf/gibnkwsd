@@ -18,9 +18,9 @@
 
   <text x="80" y="320" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700" fill="#351f11" letter-spacing="-2">Glenker</text>
 
-  <text x="80" y="395" font-family="'Helvetica Neue', Arial, sans-serif" font-size="34" fill="#746150">Tu asistente de inteligencia artificial.</text>
+  <text x="80" y="395" font-family="'Helvetica Neue', Arial, sans-serif" font-size="34" fill="#746150">La interfaz visual para agentes de código AI.</text>
 
-  <text x="80" y="455" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" fill="#b49c8a">Catálogo MCP · 1000+ integraciones · Skills reutilizables</text>
+  <text x="80" y="455" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" fill="#b49c8a">Catálogo MCP · Skills reutilizables · Escritorio, Web y Móvil</text>
 
   <rect x="80" y="510" width="320" height="64" rx="32" fill="#f57c16"/>
   <text x="240" y="550" font-family="Helvetica Neue, Arial, sans-serif" font-size="26" font-weight="600" fill="#ffffff" text-anchor="middle">Descargar Gratis</text>

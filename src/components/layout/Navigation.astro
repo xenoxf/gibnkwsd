@@ -34,11 +34,27 @@
 <style is:global>
 .nav {
   position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  max-width: 1200px
   top: 0;
   z-index: 1000;
   padding: 1rem 2rem;
   background: transparent;
+  transition: background var(--transition) var(--ease-out),
+    backdrop-filter var(--transition) var(--ease-out),
+    border-color var(--transition) var(--ease-out),
+    box-shadow var(--transition) var(--ease-out);
+}
+
+.nav.scrolled {
+  background: rgba(252, 247, 242, 0.72);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 8px 30px rgba(70, 45, 25, 0.06);
 }
 
 .nav-inner {
@@ -46,7 +62,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  max-width: var(--shell-max);
+  width: 80%;
+  border-radius: 20px;
   margin: 0 auto;
 }
 

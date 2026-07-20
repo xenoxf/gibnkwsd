@@ -10,23 +10,22 @@ import '../styles/responsive.css';
 ---
 
 <BaseLayout
-  title="Sobre Glenker — Asistente de IA para Todos"
-  description="Glenker es un asistente de inteligencia artificial para cualquier persona. Catálogo MCP, 1000+ integraciones con servicios, skills reutilizables y multi-dispositivo."
+  title="Sobre Glenker — La interfaz visual para agentes de código AI"
+  description="Glenker es una interfaz rica para agentes de código AI, fork de OpenChamber. Catálogo de MCPs, skills reutilizables, multi-dispositivo y acceso remoto. Open source y gratis."
   canonical="https://glenker.vercel.app/about"
-  keywords="Glenker, asistente de IA, inteligencia artificial, MCP, integraciones, Composio, skills, Google"
+  keywords="Glenker, agente de código, OpenCode, OpenChamber, MCP, skills, fork, xenoxf, desarrollo"
 >
   <NoiseOverlay />
+  <Navigation />
+  <MobileMenu />
   <Shell>
-    <Navigation />
-    <MobileMenu />
-
     <section class="about-hero">
       <span class="section-label">// Sobre Glenker</span>
-      <h1 class="about-title">Un asistente de <span class="gradient-text">Inteligencia Artificial</span> para cualquiera</h1>
+      <h1 class="about-title">La interfaz visual para <span class="gradient-text">agentes de código</span></h1>
       <p class="about-desc">
-        Glenker nació de una molestia simple: la IA buena estaba guardada para quienes saben programar.
-        Quisimos una herramienta que cualquier persona abra, conecte sus apps y empiece a usar el mismo día,
-        sin cursos ni tutoriales de dos horas.
+        Glenker nació de una molestia simple: la experiencia de los agentes de código estaba guardada para quienes
+        viven en la terminal. Quisimos una interfaz rica que cualquiera abra y use el mismo día, sin renunciar a
+        todo el poder de la IA para programar.
       </p>
     </section>
 
@@ -35,39 +34,48 @@ import '../styles/responsive.css';
         <div class="about-text">
           <h2>¿Qué es Glenker?</h2>
           <p>
-            Es un asistente de inteligencia artificial para cualquiera, no solo para quienes escriben código.
-            La idea es sencilla: que la potencia de los agentes de IA deje de ser algo de nicho y llegue a la gente
-            que solo quiere que sus tareas se hagan.
+            Es una interfaz rica para agentes de código AI. Revisas diffs, gestionas agentes, corres servidores y
+            mantienes el panorama completo mientras la IA programa por ti — desde el navegador, el escritorio o tu
+            celular. Glenker nace como un fork de OpenChamber con una visión distinta: llevar los agentes de código
+            al usuario común, no solo al dev.
           </p>
           <p>
-            Trae un catálogo de herramientas MCP donde instalas lo que necesitas con un clic, y se conecta con más
-            de mil servicios a través de Composio: Gmail, Slack, Google Drive, Notion y muchos más. Le das permiso
-            una vez y ya puede trabajar por ti.
+            Trae un catálogo de MCPs donde instalas herramientas y APIs con un clic, un sistema de skills reutilizables
+            y mejoras de UX pensadas para ver y entender, no para adivinar comandos. Y esto es solo el principio.
           </p>
           <h2>Características principales</h2>
           <ul>
-          <li><strong>Catálogo MCP:</strong> Instalas servidores MCP con un clic. Con búsqueda, filtros y permisos incluidos.</li>
-          <li><strong>1000+ integraciones:</strong> Conectas tus servicios favoritos con un par de clics. Gmail, Slack, Google Drive, Notion.</li>
-          <li><strong>Skills reutilizables:</strong> Creas, guardas y compartes automatizaciones entre proyectos.</li>
-          <li><strong>Multi-dispositivo:</strong> Escritorio, web, PWA y móvil. Te conectas desde otro equipo con un código QR.</li>
-          <li><strong>Modo voz:</strong> Le hablas y te contesta en voz alta, para cuando no quieres teclear.</li>
-          <li><strong>Ecosistema Google:</strong> Entras con tu cuenta de Google y usa sus modelos y herramientas.</li>
+          <li><strong>Chat ramificable:</strong> Línea de tiempo con <code>/undo</code>, <code>/redo</code> y forks con un clic desde cualquier turno.</li>
+          <li><strong>Tool UIs inteligentes:</strong> Diffs, operaciones de archivo, permisos y progreso de tareas largas, visualizados.</li>
+          <li><strong>Multi-agente:</strong> Ejecuciones desde un solo prompt con worktrees aislados.</li>
+          <li><strong>Git y GitHub nativos:</strong> Identidades, commits, PRs, checks y acciones de merge; sesiones desde issues y PRs.</li>
+          <li><strong>MCP Registry:</strong> Catálogo completo de MCPs con servidores built-in, buscador y proxy.</li>
+          <li><strong>Skills reutilizables:</strong> Creas, instalas y compartes automatizaciones entre proyectos.</li>
+          <li><strong>Multi-dispositivo:</strong> Escritorio, web, PWA y móvil. Misma sesión en todos lados, con acceso remoto por túneles.</li>
+          <li><strong>Personalización:</strong> 18+ temas, temas propios en JSON, atajos configurables e integraciones Google.</li>
           </ul>
         </div>
         <aside class="about-sidebar">
           <div class="about-card">
             <h3>Detalles</h3>
             <ul>
-              <li><strong>Plataformas:</strong> macOS, Windows, Linux</li>
-              <li><strong>Precio:</strong> Gratuito</li>
-              <li><strong>Idiomas:</strong> Español, Inglés, Portugués, Francés, Coreano y más</li>
-              <li><strong>Requiere:</strong> Node.js 22+</li>
+              <li><strong>Plataformas:</strong> macOS, Windows, Linux, Web &amp; PWA, Móvil</li>
+              <li><strong>Precio:</strong> Gratuito </li>
+            </ul>
+          </div>
+          <div class="about-card">
+            <h3>Creador</h3>
+            <ul>
+              <li><strong>Jesús Adrian Camacho Casierra</strong> (aka <a href="https://github.com/xenoxf" target="_blank" rel="noopener noreferrer">xenoxf</a>)</li>
+              <li>Dev fullstack colombiano de 15 años</li>
+              <li>Creador de LearnYos, APIs en NestJS y Spring Boot y dashboards con Tauri</li>
             </ul>
           </div>
           <div class="about-card">
             <h3>Enlaces</h3>
             <ul>
-              <li><a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer">Discord</a></li>
+              <li><a href="https://github.com/xenoxf/Glenker" target="_blank" title="GitHub" rel="noopener noreferrer">GitHub</a></li>
+              <li><a href="https://ko-fi.com/xenooxf" target="_blank" title="Apóyanos en Ko-fi" rel="noopener noreferrer">Apóyanos en Ko-fi</a></li>
               <li><a href="/#download">Descargar</a></li>
             </ul>
           </div>
@@ -163,6 +171,15 @@ import '../styles/responsive.css';
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
+}
+
+.about-text code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  padding: 0.1em 0.4em;
+  border-radius: 0.35rem;
+  background: var(--accent-soft);
+  color: var(--accent-text);
 }
 
 .about-sidebar {
