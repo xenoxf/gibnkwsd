@@ -35,6 +35,7 @@
   border-radius: 50%;
   filter: blur(120px);
   z-index: 0;
+  animation: float-y 18s ease-in-out infinite;
 }
 
 .glow-sphere--accent {
@@ -43,13 +44,16 @@
   background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
   top: -220px;
   right: -120px;
+  animation-duration: 20s;
 }
 
 .glow-sphere--coffee {
   width: 420px;
   height: 420px;
-  background: radial-gradient(circle, rgba(154, 109, 69, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(154, 109, 69, 0.12) 0%, transparent 70%);
   bottom: -140px;
   left: -120px;
+  animation-duration: 24s;
+  animation-delay: -7s;
 }
 </style>

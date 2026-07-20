@@ -4,13 +4,38 @@ export function parseChangelog(release) {
   const body = release.body || '';
   const lines = body.split('\n')
     .filter(l => l.trim().startsWith('-') || l.trim().startsWith('*'))
-    .map(l => l.replace(/^[-*\s]+/, '').trim());
+    .map(l => l.replace(/^[-*\s]+/, '').trim())
+    .filter(l => l.length > 0);
 
   if (lines.length === 0) {
     return { items: [], raw: body.slice(0, 200) };
   }
 
   return { items: lines.slice(0, 10) };
+}
+
+export async function fetchChangelogFromRepo() {
+  try {
+    const res = await fetch('https://raw.githubusercontent.com/xenoxf/Glenker/main/CHANGELOG.md');
+    if (!res.ok) throw new Error('CHANGELOG.md fetch failed');
+    const text = await res.text();
+    const blocks = text.split(/^##\s/m);
+    for (let i = 1; i < blocks.length; i++) {
+      const block = blocks[i];
+      const lines = block.split('\n')
+        .filter(l => l.trim().startsWith('-') || l.trim().startsWith('*'))
+        .map(l => l.replace(/^[-*\s]+/, '').trim())
+        .filter(l => l.length > 0);
+      if (lines.length > 0) {
+        const versionMatch = block.match(/^\[?([\d.]+)/);
+        return { items: lines.slice(0, 10), version: versionMatch ? versionMatch[1] : null };
+      }
+    }
+    return null;
+  } catch (err) {
+    console.error('Failed to fetch CHANGELOG.md:', err);
+    return null;
+  }
 }
 
 export function getChangelogHTML(release) {

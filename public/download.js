@@ -1,4 +1,4 @@
-const GITHUB_REPO = "xenoxf/openjunior";
+const GITHUB_REPO = "xenoxf/Glenker";
 
 function detectArchitecture() {
   const ua = navigator.userAgent;
@@ -150,37 +150,68 @@ function renderDownloadButton(container, platform, release) {
   container.innerHTML = html;
 }
 
-function renderChangelog(release) {
+function parseChangelogLines(body) {
+  return body
+    .split("\n")
+    .filter((l) => l.trim().startsWith("-") || l.trim().startsWith("*"))
+    .map((l) => l.replace(/^[-*\s]+/, "").trim())
+    .filter((t) => t.length > 0)
+    .slice(0, 10);
+}
+
+async function fetchChangelogFromRepo() {
+  try {
+    const res = await fetch(
+      "https://raw.githubusercontent.com/xenoxf/Glenker/main/CHANGELOG.md",
+    );
+    if (!res.ok) throw new Error("CHANGELOG.md fetch failed");
+    const text = await res.text();
+    const blocks = text.split(/^##\s/m);
+    for (let i = 1; i < blocks.length; i++) {
+      const block = blocks[i];
+      const items = parseChangelogLines(block);
+      if (items.length > 0) {
+        const versionMatch = block.match(/^\[?([\d.]+)/);
+        return { items, version: versionMatch ? versionMatch[1] : null };
+      }
+    }
+    return null;
+  } catch (err) {
+    console.error("Failed to fetch CHANGELOG.md:", err);
+    return null;
+  }
+}
+
+async function renderChangelog(release) {
   const container = document.getElementById("changelog-content");
   if (!container) return;
 
-  if (!release) {
+  let items = release && release.body ? parseChangelogLines(release.body) : [];
+  let source = "release";
+
+  if (items.length === 0) {
+    const fromRepo = await fetchChangelogFromRepo();
+    if (fromRepo) {
+      items = fromRepo.items;
+      source = "repo";
+    }
+  }
+
+  if (items.length === 0) {
     container.innerHTML =
       '<p class="changelog-empty">No pudimos cargar el changelog ahora mismo. <a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer">Escríbenos en Discord</a> y te pasamos las novedades.</p>';
     return;
   }
 
-  const body = release.body || "";
-  const lines = body
-    .split("\n")
-    .filter((l) => l.trim().startsWith("-") || l.trim().startsWith("*"));
-
-  if (lines.length === 0) {
-    const fallback = body.slice(0, 200) || "Sin notas de cambio disponibles.";
-    container.innerHTML = `<p class="changelog-empty">${fallback}</p>`;
-    return;
-  }
-
-  container.innerHTML = lines
-    .slice(0, 10)
-    .map((line) => {
-      const text = line.replace(/^[-*\s]+/, "").trim();
-      return `<div class="changelog-item"><span class="changelog-bullet"></span><span class="changelog-text">${text}</span></div>`;
-    })
+  container.innerHTML = items
+    .map(
+      (text) =>
+        `<div class="changelog-item"><span class="changelog-bullet"></span><span class="changelog-text">${text}</span></div>`,
+    )
     .join("");
 
   container.innerHTML +=
-    `<div class="changelog-more"><a href="https://discord.gg/ZYRSdnwwKA" target="_blank" rel="noopener noreferrer">Cuéntanos en Discord</a></div>`;
+    `<div class="changelog-more"><a href="https://github.com/xenoxf/Glenker/releases" target="_blank" rel="noopener noreferrer">Ver todas las versiones en GitHub</a></div>`;
 }
 
 function showOSDetection(platform) {
